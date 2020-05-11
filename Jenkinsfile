@@ -5,7 +5,7 @@ pipeline {
                 stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
-                    def curlCmd = bat "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep -oP '\"tag_name\": \"\\K(.*)(?=\")'"
+                    def curlCmd = sh 'curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep -oP '\"tag_name\": \"\\K(.*)(?=\")''
                     echo "curlCmd done"+curlCmd
                     echo "tag_name: " + tag_name
                     def tags_split=tag_name.replaceAll("[^-?0-9]+", " ");
