@@ -13,11 +13,11 @@ pipeline {
                     tags_split = tags_split.replaceAll(" +", " ")
                     echo "cleaned tag_name:"+tags_split
                     def values=tags_split.split(" ")
-                    def java_version_major=values[1]
+                    def java_version_major=values[0]
                     echo "java_version_major:"+java_version_major
-                    def java_version_minor=values[2]
+                    def java_version_minor=values[1]
                     echo "java_version_minor:"+java_version_minor
-                    def java_version_build=values[3]
+                    def java_version_build=values[2]
                     echo "java_version_build:"+java_version_build
                 }
             }
