@@ -21,7 +21,7 @@ pipeline {
                     echo "java_version_build:"+java_version_build
                     def customImage = docker.build(
                             'hello' + version,
-                            "-f java/rwcm-openjdk8-newrelic5/Dockerfile " +
+                            "-f Dockerfile " +
                             "--no-cache " +
                             "--build-arg java_version_major " +
                             "--build-arg java_version_minor " +
