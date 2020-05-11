@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     def curlCmd = "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep -oP '\"tag_name\": \"\\K(.*)(?=\")'"
-                    def tag_name = sh(returnStdout: true, script: curlCmd).trim().toString()
+                    def tag_name = bat(returnStdout: true, script: curlCmd).trim().toString()
                     echo "tag_name: " + tag_name
                     def tags_split=tag_name.replaceAll("[^-?0-9]+", " ");
                     echo "cleaned tag_name:"+tags_split
