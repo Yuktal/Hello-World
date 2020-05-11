@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    
+    stages{
                 stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
@@ -19,4 +21,5 @@ pipeline {
                 }
             }
         }
+    }
 }
