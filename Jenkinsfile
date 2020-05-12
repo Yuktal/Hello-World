@@ -3,12 +3,14 @@ pipeline {
     
     stages{
         
-            stage('Initialize')
+        stage('Initialize'){
+            steps
     {
         def dockerHome = tool 'MyDocker'
         def mavenHome  = tool 'MyMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
+        }
                 stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
