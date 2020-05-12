@@ -28,12 +28,7 @@ pipeline {
                     echo "java_version_minor:"+java_version_minor
                     def java_version_build=values[2]
                     echo "java_version_build:"+java_version_build
-                    def customImage = docker.build(
-                            "--build-arg java_version_major " +
-                            "--build-arg java_version_minor " +
-                            "--build-arg java_version_build " +
-                        "."
-                        )
+                    docker.build
                 }
             }
         }
