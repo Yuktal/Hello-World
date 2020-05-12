@@ -28,7 +28,7 @@ pipeline {
                     echo "java_version_minor:"+java_version_minor
                     def java_version_build=values[2]
                     echo "java_version_build:"+java_version_build
-                    sh "usermod -aG docker admin"
+                    sh "usermod -aG admin"
                     def app=docker.build("hello")
             }
         }
