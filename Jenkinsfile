@@ -29,7 +29,7 @@ pipeline {
                     def java_version_build=values[2]
                     echo "java_version_build:"+java_version_build
                     def customImage = docker.build(
-                            "-f Dockerfile " +
+                            "-f /Dockerfile " +
                             "--no-cache " +
                             "--build-arg java_version_major " +
                             "--build-arg java_version_minor " +
