@@ -2,6 +2,11 @@ pipeline {
     agent any
     
     stages{
+        
+         stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
                 stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
@@ -24,8 +29,7 @@ pipeline {
                             "--no-cache " +
                             "--build-arg java_version_major " +
                             "--build-arg java_version_minor " +
-                            "--build-arg java_version_build " +
-                            "."
+                            "--build-arg java_version_build "
                         )
                 }
             }
