@@ -2,16 +2,16 @@ pipeline {
     agent any
     
     stages{
-        
         stage('Initialize'){
-            steps
-    {
+            steps {
+                script{
         def dockerHome = tool 'MyDocker'
         def mavenHome  = tool 'MyMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     }
+            }
         }
-                stage('Docker Build and Deploy Snapshot') {
+       stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
                     def curlCmd = "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep -oP '\"tag_name\": \"\\K(.*)(?=\")'"
