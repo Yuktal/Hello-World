@@ -29,7 +29,6 @@ pipeline {
                     def java_version_build=values[2]
                     echo "java_version_build:"+java_version_build
                     docker build .
-                }
             }
         }
     }
