@@ -14,9 +14,9 @@ pipeline {
        stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
-                    def curlCmd = "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep -oP 'tag_name'"
+                    def curlCmd = "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep 'tag_name'"
                     def tag_name = sh(returnStdout: true, script: curlCmd).trim().toString()
-                    echo "tag_name: " + tag_name
+                    echo tag_name
                     def tags_split=tag_name.replaceAll("[^\\d]", " ")
                     tags_split=tags_split.trim()
                     tags_split = tags_split.replaceAll(" +", " ")
