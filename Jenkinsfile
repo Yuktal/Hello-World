@@ -7,7 +7,7 @@ pipeline {
             steps {
                 script {
                     def curlCmd = "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases/latest | grep 'tag_name'"
-                    def latestVersion= "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases | grep -o -m 1 '^\OpenJDK8U-jdk_x64_linux_hotspot_.*gz'"
+                    def latestVersion= "curl -s https://api.github.com/repos/AdoptOpenJDK/openjdk8-binaries/releases | grep -o -m 1 '^\\OpenJDK8U-jdk_x64_linux_hotspot_.*gz'"
                     echo latestVersion
                     def tag_name = sh(returnStdout: true, script: curlCmd).trim().toString()
                     echo tag_name
