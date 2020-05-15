@@ -6,8 +6,7 @@ pipeline {
        stage('Docker Build and Deploy Snapshot') {
             steps {
                 script {
-                    def curlCmd = "curl -s \"https://api.adoptopenjdk.net/v3/assets/feature_releases/8/ga?architecture=x64&heap_size=normal&image_type=jdk&jvm_impl=openj9&os=mac&page=0&page_size=1&project=jdk&sort_order=DESC&vendor=adoptopenjdk
-\" | grep 'release_name'"
+      def curlCmd = "curl -s \"https://api.adoptopenjdk.net/v3/assets/feature_releases/8/ga?architecture=x64&heap_size=normal&image_type=jdk&jvm_impl=openj9&os=mac&page=0&page_size=1&project=jdk&sort_order=DESC&vendor=adoptopenjdk\" | grep 'release_name'"
                     def tag_name = sh(returnStdout: true, script: curlCmd).trim().toString()
                     echo tag_name
                     def tags_split=tag_name.replaceAll("[^0-9\\.]", " ")
